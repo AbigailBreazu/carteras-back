@@ -1,6 +1,9 @@
 FROM node:18-alpine AS builder
 WORKDIR /usr/src/app
 
+# Ensure uploads folder exists so later stage can COPY it even if empty
+RUN mkdir -p /usr/src/app/uploads
+
 # Install deps and build
 COPY package*.json ./
 RUN npm ci
@@ -20,4 +23,4 @@ COPY --from=builder /usr/src/app/uploads ./uploads
 
 ENV NODE_ENV=production
 EXPOSE 3000
-CMD ["node", "dist/main"]
+CMD ["node", "dist/src/main.js"]
