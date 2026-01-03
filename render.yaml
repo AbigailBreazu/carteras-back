@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: carteras-back
+    env: node
+    repo: https://github.com/AbigailBreazu/carteras-back.git
+    branch: main
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start:prod
+    plan: starter
+    envVars:
+      - key: NODE_ENV
+        value: production
