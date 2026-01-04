@@ -47,7 +47,7 @@ import { User } from './users/entities/user.entity';
           return {
             type: 'postgres',
             url: databaseUrl,
-            entities: [__dirname + '/**/*..entity{.ts,.js}'],
+            entities: [__dirname + '/**/*.entity{.ts,.js}'],
             synchronize: configService.get<boolean>('TYPEORM_SYNC'),
           };
         }
